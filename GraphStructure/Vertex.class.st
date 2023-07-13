@@ -52,6 +52,11 @@ Vertex >> initialize [
 	position := (width/2)@(height/2)
 ]
 
+{ #category : #accessing }
+Vertex >> model [
+  ^vertexValue 
+]
+
 { #category : #printing }
 Vertex >> printOn: aStream [
 	aStream
