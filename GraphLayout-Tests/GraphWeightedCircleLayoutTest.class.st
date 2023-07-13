@@ -36,5 +36,8 @@ GraphWeightedCircleLayoutTest >> testDoExecuteWeightedCircle [
 		add: v4.
 	layout :=GraphWeightedCircleLayout  new.
 	layout doExecute: (used).
-	self assert: ((v4 position)roundDownTo: 0.01) equals: (100.14@15.41)
+	self assert: ((v1 position)roundDownTo: 0.01) equals: (108.54@95.26).
+	self assert: ((v2 position)roundDownTo: 0.01) equals: (55.72@119.67).
+	self assert: ((v3 position)roundDownTo: 0.01) equals: (1.31@47.52).
+	self assert: ((v4 position)roundDownTo: 0.01) equals: (100.14@15.41).
 ]

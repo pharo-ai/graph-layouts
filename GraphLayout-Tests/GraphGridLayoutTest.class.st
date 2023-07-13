@@ -36,5 +36,8 @@ GraphGridLayoutTest >> testDoExecute [
 		add: v4.
 	layout :=GraphGridLayout  new.
 	layout doExecute: (used).
-	self assert: (v3 position) equals: (5.0@37.5)
+	self assert: (v1 position) equals: (5.0@7.5).
+	self assert: (v2 position) equals: (30.0@7.5).
+	self assert: (v3 position) equals: (5.0@27.5).
+	self assert: (v4 position) equals: (30.0@37.5).
 ]

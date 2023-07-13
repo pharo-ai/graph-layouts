@@ -45,7 +45,10 @@ v4 is 30@35."
 		addEdgeFrom: v3 to: v4;
 		addEdgeFrom: v1 to: v4;
 		addEdgeFrom: v4 to: v2.
-	self assert: v4 dimension equals: 30 @ 35
+	self assert: v1 dimension equals: 50@55.
+	self assert: v2 dimension equals: 10@15.
+	self assert: v3 dimension equals: 70@75.
+	self assert: v4 dimension equals: 30 @ 35.
 ]
 
 { #category : #tests }
@@ -66,7 +69,10 @@ TVertexTraitTest >> testHasChildren [
 		addEdgeFrom: v3 to: v4;
 		addEdgeFrom: v1 to: v4;
 		addEdgeFrom: v4 to: v2.
-	self assert: v3 hasChildren
+	self assert: v1 hasChildren.
+	self assert: v2 hasChildren equals: false.
+	self assert: v3 hasChildren.
+	self assert: v4 hasChildren.
 ]
 
 { #category : #tests }
@@ -85,7 +91,8 @@ TVertexTraitTest >> testInDegree [
 	graph addEdgeFrom: v3 to: v1.
 	graph addEdgeFrom: v4 to: v1.
 	graph addEdgeFrom: v3 to: v4.
-	self assert: v1 inDegree equals: 2
+	self assert: v1 inDegree equals: 2.
+	self assert: v4 inDegree equals: 1.
 ]
 
 { #category : #tests }
@@ -105,7 +112,8 @@ TVertexTraitTest >> testNeighbourhood [
 	graph addEdgeFrom: v3 to: v1.
 	graph addEdgeFrom: v4 to: v1.
 	graph addEdgeFrom: v3 to: v4.
-	self assert: (v4 neighbourhood) size equals: 3
+	self assert: (v1 neighbourhood) size equals: 2.
+	self assert: (v4 neighbourhood) size equals: 3.
 ]
 
 { #category : #tests }
@@ -127,7 +135,9 @@ TVertexTraitTest >> testOutDegree [
 		addEdgeFrom: v4 to: v1;
 		addEdgeFrom: v1 to: v4;
 		addEdgeFrom: v3 to: v4.
-	self assert: v1 outDegree equals: 1
+	self assert: v1 outDegree equals: 1.
+	self assert: v3 outDegree equals: 2.
+	self assert: v4 outDegree equals: 2.
 ]
 
 { #category : #tests }

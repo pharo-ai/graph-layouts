@@ -36,7 +36,10 @@ GraphCellLayoutTest >> testDoExecute [
 		add: v4.
 	layout :=GraphCellLayout  new.
 	layout doExecute: (used).
-	self assert: (v1 position) equals: (25@7.5)
+	self assert: (v1 position) equals: (25@7.5).
+	self assert: (v2 position) equals: (125.0@7.5).
+	self assert: (v3 position) equals: (25.0@57.5).
+	self assert: (v4 position) equals: (125.0@57.5).
 ]
 
 { #category : #tests }

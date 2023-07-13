@@ -42,7 +42,11 @@ GraphTreeLayoutTest >> testBottomLayoutAtPointAtLayer [
 	layout := GraphTreeLayout new.
 	layout orientation: #bottom.
 	layout doExecute: used.
-	self assert: (v2 position roundDownTo: 0.01) equals: 10.0@ -10
+	self assert: (v1 position roundDownTo: 0.01) equals: 40.0@25.
+	self assert: (v2 position roundDownTo: 0.01) equals: 10.0@ -10.
+	self assert: (v3 position roundDownTo: 0.01) equals: 25@60.
+	self assert: (v4 position roundDownTo: 0.01) equals: 10.0@25.
+	self assert: (v5 position roundDownTo: 0.01) equals: 70.0@60.
 ]
 
 { #category : #tests }
@@ -74,7 +78,11 @@ GraphTreeLayoutTest >> testDoExecute [
 		add: v5.
 	layout := GraphTreeLayout new.
 	layout on: used.
-	self assert: (v4 position roundDownTo: 0.01) equals: 10.0@47.5
+	self assert: (v1 position roundDownTo: 0.01) equals: 40.0@47.5.
+	self assert: (v2 position roundDownTo: 0.01) equals: 10.0@82.5.
+	self assert: (v3 position roundDownTo: 0.01) equals: 25@12.5.
+	self assert: (v4 position roundDownTo: 0.01) equals: 10.0@47.5.
+	self assert: (v5 position roundDownTo: 0.01) equals: 70.0@12.5.
 ]
 
 { #category : #tests }
@@ -114,7 +122,11 @@ GraphTreeLayoutTest >> testLeftLayoutAtPointAtLayer [
 	layout := GraphTreeLayout new.
 	layout orientation: #left.
 	layout doExecute: used.
-	self assert: (v2 position roundDownTo: 0.01) equals: 70@12.5
+	self assert: (v1 position roundDownTo: 0.01) equals: 40.0@47.5.
+	self assert: (v2 position roundDownTo: 0.01) equals: 70@12.5.
+	self assert: (v3 position roundDownTo: 0.01) equals: 10@30.
+	self assert: (v4 position roundDownTo: 0.01) equals: 40@12.5.
+	self assert: (v5 position roundDownTo: 0.01) equals: 10.0@82.5.
 ]
 
 { #category : #tests }
@@ -150,7 +162,11 @@ GraphTreeLayoutTest >> testRearrangeByLayersBottom [
 	layout orientation: #bottom.
 	layout isLayered: true.
 	layout doExecute: used.
-	self assert: (v2 position roundDownTo: 0.01) equals: 10.0@ -12.5
+	self assert: (v5 position roundDownTo: 0.01) equals: 80.0@67.5.
+	self assert: (v4 position roundDownTo: 0.01) equals: 15.0@32.5.
+	self assert: (v3 position roundDownTo: 0.01) equals: 30@67.5 .
+	self assert: (v2 position roundDownTo: 0.01) equals: 10.0@ -12.5.
+	self assert: (v1 position roundDownTo: 0.01) equals: 50.0@27.5 .
 ]
 
 { #category : #tests }
@@ -186,7 +202,11 @@ GraphTreeLayoutTest >> testRearrangeByLayersLeft [
 	layout orientation: #left.
 	layout isLayered: true.
 	layout doExecute: used.
-	self assert: (v2 position roundDownTo: 0.01) equals: 80@12.5
+	self assert: (v5 position roundDownTo: 0.01) equals: 10@92.5.
+	self assert: (v4 position roundDownTo: 0.01) equals: 45@12.5.
+	self assert: (v3 position roundDownTo: 0.01) equals: 10@35 .
+	self assert: (v2 position roundDownTo: 0.01) equals: 80@12.5.
+	self assert: (v1 position roundDownTo: 0.01) equals: 40@52.5 .
 ]
 
 { #category : #tests }
@@ -222,7 +242,11 @@ GraphTreeLayoutTest >> testRearrangeByLayersRight [
 	layout orientation: #right.
 	layout isLayered: true.
 	layout doExecute: used.
-	self assert: (v2 position roundDownTo: 0.01) equals: 25@12.5
+	self assert: (v5 position roundDownTo: 0.01) equals: 95@92.5.
+	self assert: (v4 position roundDownTo: 0.01) equals: 60@12.5.
+	self assert: (v3 position roundDownTo: 0.01) equals: 95@35 .
+	self assert: (v2 position roundDownTo: 0.01) equals: 25@12.5.
+	self assert: (v1 position roundDownTo: 0.01) equals: 65@52.5 .
 ]
 
 { #category : #tests }
@@ -257,7 +281,11 @@ GraphTreeLayoutTest >> testRearrangeByLayersTop [
 	layout := GraphTreeLayout new.
 	layout isLayered: true.
 	layout doExecute: used.
-	self assert: (v2 position roundDownTo: 0.01) equals: 10.0@92.5
+	self assert: (v5 position roundDownTo: 0.01) equals: 80.0@12.5.
+	self assert: (v4 position roundDownTo: 0.01) equals: 15.0@47.5.
+	self assert: (v3 position roundDownTo: 0.01) equals: 30@12.5 .
+	self assert: (v2 position roundDownTo: 0.01) equals: 10.0@92.5.
+	self assert: (v1 position roundDownTo: 0.01) equals: 50@52.5.
 ]
 
 { #category : #tests }
@@ -290,7 +318,11 @@ GraphTreeLayoutTest >> testRightLayoutAtPointAtLayer [
 	layout := GraphTreeLayout new.
 	layout orientation: #right.
 	layout doExecute: used.
-	self assert: (v2 position roundDownTo: 0.01) equals: 10@12.5
+	self assert: (v1 position roundDownTo: 0.01) equals: 70@82.5.
+	self assert: (v2 position roundDownTo: 0.01) equals: 40@12.5.
+	self assert: (v3 position roundDownTo: 0.01) equals: 70@30 .
+	self assert: (v4 position roundDownTo: 0.01) equals: 10@12.5.
+	self assert: (v5 position roundDownTo: 0.01) equals: 40.0@47.5 .
 ]
 
 { #category : #tests }
@@ -322,5 +354,9 @@ GraphTreeLayoutTest >> testTopLayoutAtPointAtLayer [
 		add: v5.
 	layout := GraphTreeLayout new.
 	layout doExecute: used.
-	self assert: (v4 position roundDownTo: 0.01) equals: 10.0@47.5
+	self assert: (v1 position roundDownTo: 0.01) equals:  70.0@12.5.
+	self assert: (v2 position roundDownTo: 0.01) equals: 10.0@47.5.
+	self assert: (v3 position roundDownTo: 0.01) equals: 25@12.5 .
+	self assert: (v4 position roundDownTo: 0.01) equals: 10.0@82.5.
+	self assert: (v5 position roundDownTo: 0.01) equals: 40.0@47.5 .
 ]

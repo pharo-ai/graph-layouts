@@ -36,5 +36,8 @@ GraphCircleLayoutTest >> testDoExecuteCircle [
 		add: v4.
 	layout :=GraphCircleLayout  new.
 	layout doExecute: (used).
+	self assert: ((v1 position)roundDownTo: 0.01) equals: (125.0@67.5).
+	self assert: ((v2 position)roundDownTo: 0.01) equals: (65.0@127.5).
+	self assert: ((v3 position)roundDownTo: 0.01) equals: (5.0@67.5).
 	self assert: ((v4 position)roundDownTo: 0.01) equals: (64.99@7.5)
 ]

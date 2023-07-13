@@ -43,7 +43,11 @@ GraphClusterLayoutTest >> testComputePosition [
 	root := layout rootNodesFor: gr vertices.
 	root do: [ :e | layout initializeNode: e ].
 	root do: [ :e | layout computePosition: e ].
-	self assert: ((layout xOf: v5) roundDownTo: 0.01) equals: 5
+	self assert: ((layout xOf: v5) roundDownTo: 0.01) equals: 5.
+	self assert: ((layout xOf: v4) roundDownTo: 0.01) equals: 25.
+	self assert: ((layout xOf: v3) roundDownTo: 0.01) equals: 35.
+	self assert: ((layout xOf: v2) roundDownTo: 0.01) equals: 25.
+	self assert: ((layout xOf: v1) roundDownTo: 0.01) equals: 45.
 ]
 
 { #category : #tests }
@@ -75,7 +79,11 @@ GraphClusterLayoutTest >> testDoExecute [
 		add: v5.
 	layout := GraphClusterLayout new.
 	layout on: used.
-	self assert: (v2 position roundDownTo: 0.01) equals: 84.69 @ -34.33
+	self assert: (v5 position roundDownTo: 0.01) equals: -26.92@91.65.
+	self assert: (v4 position roundDownTo: 0.01) equals: 58.12@ -20.39.
+	self assert: (v3 position roundDownTo: 0.01) equals: 8.61@ -22.29 .
+	self assert: (v2 position roundDownTo: 0.01) equals: 84.69@ -34.33.
+	self assert: (v1 position roundDownTo: 0.01) equals: -62.37@ -52.19 .
 ]
 
 { #category : #tests }
