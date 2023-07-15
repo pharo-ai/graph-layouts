@@ -7,6 +7,11 @@ Class {
 	#category : #GraphStructure
 }
 
+{ #category : #accessing }
+Edge >> from [
+  ^from
+]
+
 { #category : #initialization }
 Edge >> initialize [ 
 	"Initializes Edge objects."
@@ -20,4 +25,9 @@ Edge >> setFrom: aVertex1 to: aVertex2 [
 
 self fromVertex: aVertex1.
 self toVertex: aVertex2  
+]
+
+{ #category : #accessing }
+Edge >> to [
+  ^to
 ]
