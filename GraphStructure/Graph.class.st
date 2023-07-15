@@ -87,22 +87,13 @@ Graph >> addingUndirectedEdgeFrom: ver1 to: ver2 [
 Graph >> drawGraphCircleNode [
 
 <inspectorPresentationOrder: 0 title: 'Graph'>
-| c nodes localEdges put box label |
+| c box label |
 
 c := RSCanvas new.
-nodes:= OrderedCollection new.
-localEdges:= OrderedCollection new.
 
-vertices do: [:each | nodes add: each model].
-edges do: [:each | 
-	put:= OrderedCollection new.
-	put add: (each from model).
-	put add: (each to model).
-	localEdges add: put].
-
-c addAll: (RSComposite models: nodes forEach: [:shape :model |
+c addAll: (RSComposite models: vertices forEach: [:shape :model |
     label := (RSLabel new
-        text: model asString;
+        text: (model model) asString;
         color: Color black;
         yourself).
     box := RSCircle new
@@ -112,7 +103,9 @@ c addAll: (RSComposite models: nodes forEach: [:shape :model |
     shape
         add: box;
         add: label;
-        yourself
+        position: 100@100"model position"; "Please fix position syntax"
+        yourself.  
+  
      ]).
 c nodes @ RSDraggable new.
 
@@ -122,7 +115,7 @@ RSLineBuilder arrowedLine
     color: Color black;
     withBorderAttachPoint;
     shapes: c nodes;
-    useAssociations: (localEdges collect: [:each | each first -> each last ]).
+    useAssociations: (edges collect: [:each | each from -> each to ]).
     
 RSCircleLayout on: c nodes.
 ^c
@@ -149,6 +142,18 @@ Graph >> edges [
 { #category : #setter }
 Graph >> edges: anObject [
 	edges := anObject
+]
+
+{ #category : #accessing }
+Graph >> findEdge: aModel [
+
+^edges detect: [:each | aModel == (each model)].
+]
+
+{ #category : #'as yet unclassified' }
+Graph >> findVertex: aModel [
+
+^vertices detect: [:each | aModel == (each model)].
 ]
 
 { #category : #initialization }

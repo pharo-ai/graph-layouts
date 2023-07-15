@@ -71,9 +71,9 @@ GraphHorizontalLineLayoutTest >> testInitialize [
 GraphHorizontalLineLayoutTest >> testMovePointerAccordingToFigure [
 "Test that checks if moving of a pointer for the next vertex is in according to his size is done good.
 For default size of vertex.
-If alightment is center, expected resault is 20@7.5 .
+If alightment is center, expected resault is 20@15 .
 If alightment is bottom, expected resault is 20@15 .
-If alightment is default, expected resault is 20@0 ."
+If alightment is default, expected resault is 20@15 ."
 
  	|gr v1 layout pointer|
 	gr := Graph new.
@@ -83,9 +83,9 @@ If alightment is default, expected resault is 20@0 ."
 	pointer := layout positionOriginalPointer: (gr vertices).
 	self assert: (layout movePointer: pointer accordingToFigure: v1) equals: (20@15).
 	layout alignment: #center.
-	self assert: (layout movePointer: pointer accordingToFigure: v1) equals: (20@7.5).
+	self assert: (layout movePointer: pointer accordingToFigure: v1) equals: (20@15).
 	layout alignment: #default.
-	self assert: (layout movePointer: pointer accordingToFigure: v1) equals: (20@0).
+	self assert: (layout movePointer: pointer accordingToFigure: v1) equals: (20@15).
 ]
 
 { #category : #tests }

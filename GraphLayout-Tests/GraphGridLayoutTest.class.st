@@ -16,7 +16,7 @@ GraphGridLayoutTest >> actualClass [
 GraphGridLayoutTest >> testDoExecute [
 	"A test that checks execution of grid layout. For easier testing, we transfer the set of vertices 	to LinkedList, so we can have ordered collection. Have in mind that position stors center of 	vertex.
 	For v4, expected result 30.0@37.5 .
-	For v3, expected result 5.0@27.5 .
+	For v3, expected result 5.0@37.5 .
 	For v2, expected result 30.0@7.5 .
 	For v1, expected result 5.0@7.5 ." 
 	
@@ -38,6 +38,6 @@ GraphGridLayoutTest >> testDoExecute [
 	layout doExecute: (used).
 	self assert: (v1 position) equals: (5.0@7.5).
 	self assert: (v2 position) equals: (30.0@7.5).
-	self assert: (v3 position) equals: (5.0@27.5).
+	self assert: (v3 position) equals: (5.0@37.5).
 	self assert: (v4 position) equals: (30.0@37.5).
 ]
