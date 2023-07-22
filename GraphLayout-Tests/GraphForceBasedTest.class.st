@@ -85,7 +85,11 @@ GraphForceBasedTest >> testDoExecute [
 		add: v5.
 	layout :=GraphForceBasedLayout  new.
 	layout doExecute: (used).
-	self assert: (((v5 position) roundDownTo: 0.01) closeTo: (209.53@222.92))
+	self assert: (((v5 position) roundDownTo: 0.01) closeTo: 209.53@222.92) .
+	self assert: (((v4 position) roundDownTo: 0.01) closeTo: 180.88@214.04) .
+	self assert: (((v3 position) roundDownTo: 0.01) closeTo: 222.8@199.53 ).
+	self assert: (((v2 position) roundDownTo: 0.01) closeTo: 207.03@178.5).
+	self assert: (((v1 position) roundDownTo: 0.01) closeTo: 180.93@184.04) .
 ]
 
 { #category : #tests }
@@ -128,7 +132,10 @@ GraphForceBasedTest >> testInitialPositionOfNodes [
 		add: v4.
 	layout :=GraphForceBasedLayout new.
 	layout initialPositionOfNodes: (used).
-	self assert: (v2 position) equals: (30.0@7.5)
+	self assert: (v4 position) equals: 30.0@37.5 .
+	self assert: (v3 position) equals: 5.0@37.5 .
+	self assert: (v2 position) equals: 30.0@7.5 .
+	self assert: (v1 position) equals: 5.0@7.5 .
 ]
 
 { #category : #tests }
@@ -201,7 +208,11 @@ GraphForceBasedTest >> testPrepareNodes [
 	layout := GraphForceBasedLayout new.
 	layout setEdgesFromElements: (gr vertices ).
 	layout prepareNodes: (gr vertices ).
-	self assert: (layout weights at: v3) equals: 2
+	self assert: (layout weights at: v1) equals: 1.
+	self assert: (layout weights at: v2) equals: 1.
+	self assert: (layout weights at: v3) equals: 2.
+	self assert: (layout weights at: v4) equals: 2.
+	self assert: (layout weights at: v5) equals: 0.
 ]
 
 { #category : #tests }

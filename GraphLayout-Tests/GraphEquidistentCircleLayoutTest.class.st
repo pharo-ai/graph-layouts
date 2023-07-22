@@ -36,5 +36,8 @@ GraphEquidistentCircleLayoutTest >> testDoExecuteEquidistentCircle [
 		add: v4.
 	layout :=GraphEquidistentCircleLayout  new.
 	layout doExecute: (used).
-	self assert: ((v3 position)roundDownTo: 0.01) equals: (0.46@52.51)
+	self assert: ((v1 position)roundDownTo: 0.01) equals: (119.53@67.48).
+	self assert: ((v2 position)roundDownTo: 0.01) equals: (56.25@119.88).
+	self assert: ((v3 position)roundDownTo: 0.01) equals: (0.46@52.51).
+	self assert: ((v4 position)roundDownTo: 0.01) equals: (71.18@1.05).
 ]

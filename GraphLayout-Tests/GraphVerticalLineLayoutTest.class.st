@@ -15,14 +15,18 @@ GraphVerticalLineLayoutTest >> testDeltaFor [
 For default size of vertex.
 If alightment is center, expected resault is 5@0 .
 If alightment is right, expected resault is 10@0 .
-If alightment is defaul, expected resault is 0@0 ."
+If alightment is default, expected resault is 0@0 ."
 
  	|gr v1 layout|
 	gr := Graph new.
 	v1 := gr addVertexWithValue: 1.
 	layout := GraphVerticalLineLayout new .
 	layout alignment: #right.
-	self assert: (layout deltaFor: v1) equals: (10@0)
+	self assert: (layout deltaFor: v1) equals: (10@0).
+	layout alignment: #center.
+	self assert: (layout deltaFor: v1) equals: (5@0).
+	layout alignment: #default.
+	self assert: (layout deltaFor: v1) equals: (0@0).
 ]
 
 { #category : #tests }
@@ -49,7 +53,10 @@ GraphVerticalLineLayoutTest >> testDoExecute [
 		add: v4.
 	layout :=GraphVerticalLineLayout new.
 	layout doExecute: (used).
-	self assert: (v2 position) equals: (5@32.5)
+	self assert: (v1 position) equals: (5@7.5).
+	self assert: (v2 position) equals: (5@32.5).
+	self assert: (v3 position) equals: (5@57.5).
+	self assert: (v4 position) equals: (5@82.5).
 ]
 
 { #category : #tests }
@@ -93,5 +100,9 @@ If alightment is default, expected resault is 0@0 ."
 	v4 := gr addVertexWithValue: 4.
 	layout := GraphVerticalLineLayout new .
 	layout alignment: #center.
-	self assert: (layout positionOriginalPointer: (gr vertices)) equals: (5@0)
+	self assert: (layout positionOriginalPointer: (gr vertices)) equals: (5@0).
+	layout alignment: #right.
+	self assert: (layout positionOriginalPointer: (gr vertices)) equals: (10@0).
+	layout alignment: #default.
+	self assert: (layout positionOriginalPointer: (gr vertices)) equals: (0@0).
 ]

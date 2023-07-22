@@ -83,51 +83,6 @@ Graph >> addingUndirectedEdgeFrom: ver1 to: ver2 [
 	self edges add: tmp1
 ]
 
-{ #category : #'as yet unclassified' }
-Graph >> drawGraphCircleNode [
-
-<inspectorPresentationOrder: 0 title: 'Graph'>
-| c nodes localEdges put box label |
-
-c := RSCanvas new.
-nodes:= OrderedCollection new.
-localEdges:= OrderedCollection new.
-
-vertices do: [:each | nodes add: each model].
-edges do: [:each | 
-	put:= OrderedCollection new.
-	put add: (each from model).
-	put add: (each to model).
-	localEdges add: put].
-
-c addAll: (RSComposite models: nodes forEach: [:shape :model |
-    label := (RSLabel new
-        text: model asString;
-        color: Color black;
-        yourself).
-    box := RSCircle new
-          extent: label extent y @ label extent y;
-        color: Color white;
-        borderColor: Color black.
-    shape
-        add: box;
-        add: label;
-        yourself
-     ]).
-c nodes @ RSDraggable new.
-
-c @ RSCanvasController new.
-
-RSLineBuilder arrowedLine
-    color: Color black;
-    withBorderAttachPoint;
-    shapes: c nodes;
-    useAssociations: (localEdges collect: [:each | each first -> each last ]).
-    
-RSCircleLayout on: c nodes.
-^c
-]
-
 { #category : #'checking existance' }
 Graph >> edgeExists: edge [
 	"Inspecting if given egde exists in graph."
@@ -149,6 +104,18 @@ Graph >> edges [
 { #category : #setter }
 Graph >> edges: anObject [
 	edges := anObject
+]
+
+{ #category : #accessing }
+Graph >> findEdge: aModel [
+
+^edges detect: [:each | aModel == (each model)].
+]
+
+{ #category : #'as yet unclassified' }
+Graph >> findVertex: aModel [
+
+^vertices detect: [:each | aModel == (each model)].
 ]
 
 { #category : #initialization }
