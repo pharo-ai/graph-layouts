@@ -83,44 +83,6 @@ Graph >> addingUndirectedEdgeFrom: ver1 to: ver2 [
 	self edges add: tmp1
 ]
 
-{ #category : #'as yet unclassified' }
-Graph >> drawGraphCircleNode [
-
-<inspectorPresentationOrder: 0 title: 'Graph'>
-| c box label |
-
-c := RSCanvas new.
-
-c addAll: (RSComposite models: vertices forEach: [:shape :model |
-    label := (RSLabel new
-        text: (model model) asString;
-        color: Color black;
-        yourself).
-    box := RSCircle new
-          extent: label extent y @ label extent y;
-        color: Color white;
-        borderColor: Color black.
-    shape
-        add: box;
-        add: label;
-        position: 100@100"model position"; "Please fix position syntax"
-        yourself.  
-  
-     ]).
-c nodes @ RSDraggable new.
-
-c @ RSCanvasController new.
-
-RSLineBuilder arrowedLine
-    color: Color black;
-    withBorderAttachPoint;
-    shapes: c nodes;
-    useAssociations: (edges collect: [:each | each from -> each to ]).
-    
-RSCircleLayout on: c nodes.
-^c
-]
-
 { #category : #'checking existance' }
 Graph >> edgeExists: edge [
 	"Inspecting if given egde exists in graph."
